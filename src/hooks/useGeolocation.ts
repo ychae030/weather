@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
+import { Address } from "../model/location";
 import { getAdress } from "../api/getAdress";
-
-export type Location = {
-  lat: number | null;
-  lon: number | null;
-};
+import { Location } from "../model/location";
 
 export default function useGeolocation() {
   const [location, setLocation] = useState<Location>({ lat: null, lon: null });
-  const [address, setAddress] = useState("로딩중...");
+  const [address, setAddress] = useState<Address | null>(null);
 
   useEffect(() => {
     if (!navigator.geolocation) {

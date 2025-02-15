@@ -1,6 +1,10 @@
-import { Location } from "../hooks/useGeolocation";
+import { Location } from "../model/location";
+import { Address } from "../model/location";
 
-export const getAdress = async ({ lat, lon }: Location) => {
+export const getAdress = async ({
+  lat,
+  lon,
+}: Location): Promise<Address | null> => {
   const url = `${import.meta.env.VITE_KAKAO_URL}?x=${lon}&y=${lat}`;
 
   try {
@@ -15,9 +19,10 @@ export const getAdress = async ({ lat, lon }: Location) => {
 
     const data = await response.json();
     if (data.documents.length < 1) return "알수 없음";
-    return data.documents[0].address_name;
+    const parts = data.documents[0].address_name.split(" ");
+    return [parts[0], parts.slice(1).join(" ")];
   } catch (error) {
     console.error("행정구역을 가져오지 못했습니다.", error);
-    return "오류 발생";
+    return null;
   }
 };
