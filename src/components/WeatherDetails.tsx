@@ -27,16 +27,16 @@ export default function WeatherDetails({
     },
   ];
   return (
-    <div>
+    <section>
       {MAP_DETAIL.map(({ title, icon, data }) => (
-        <dl>
-          <dt className="flex">
+        <>
+          <h4 className="flex">
             {icon}
             {title}
-          </dt>
-          <dd>{data}</dd>
-        </dl>
+          </h4>
+          <p>{data}</p>
+        </>
       ))}
-    </div>
+    </section>
   );
 }

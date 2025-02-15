@@ -9,7 +9,7 @@ export default function WeatherMain({
   main,
 }: WeatherMainType) {
   return (
-    <div className="flex">
+    <section className="flex">
       <div className="grid justify-center items-center">
         <p>
           <span className=" block text-xl">{region}</span>
@@ -17,10 +17,11 @@ export default function WeatherMain({
         </p>
         <div>
           <h1 className="text-6xl">{temp}°C</h1>
-          <h2 className="text-2xl">{description}</h2>
+          <h2 className="text-2xl">{main}</h2>
+          <p className="text-xl">{description}</p>
         </div>
       </div>
       <img src={icon} className="w-sm" alt={main} />
-    </div>
+    </section>
   );
 }

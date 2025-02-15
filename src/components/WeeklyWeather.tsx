@@ -7,9 +7,9 @@ type Props = {
 };
 export default function WeeklyWeather({ weathers }: Props) {
   return (
-    <div className="px-2">
+    <section className="px-2">
       <div className="flex justify-between">
-        <h2>주간온도</h2>
+        <h3>주간온도</h3>
         <p>최저 최고</p>
       </div>
 
@@ -25,6 +25,6 @@ export default function WeeklyWeather({ weathers }: Props) {
           />
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
