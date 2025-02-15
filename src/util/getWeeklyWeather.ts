@@ -48,8 +48,8 @@ export function getWeeklyWeather(
       date: date.replace(/-/g, "."),
       am,
       pm,
-      temp_max: temp_max.toFixed(1),
-      temp_min: temp_min.toFixed(1),
+      temp_max,
+      temp_min,
     })
   );
 }
