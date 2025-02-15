@@ -40,6 +40,19 @@ export type WeeklyWeatherType = {
   date: string;
   am?: Weather;
   pm?: Weather;
-  temp_min?: string;
-  temp_max?: string;
+  temp_min?: number;
+  temp_max?: number;
 };
+
+export type WeatherMainType = Pick<
+  Weather,
+  "temp" | "description" | "icon" | "main"
+> & {
+  region: string;
+  locality: string;
+};
+
+export type WeatherDetailType = Pick<
+  Weather,
+  "feels_like" | "deg" | "speed" | "humidity"
+>;
