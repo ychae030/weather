@@ -1,23 +1,46 @@
+import { WeatherWithDate } from "./../model/weather";
 import { useEffect, useState } from "react";
-import { Location } from "./useGeolocation";
-import { getWeather } from "../api/getWeather";
+import { Location } from "../model/location";
+import { getWeatherList, getWeather } from "../api/getWeather";
+import { Weather } from "../model/weather";
 
 export default function useWeather(location: Location) {
-  const [weather, setWeather] = useState("로딩중...");
+  const [weather, setWeather] = useState<Weather | null>(null);
+  const [todayHourly, setTodayHourly] = useState<WeatherWithDate[]>([]);
+  const [weekelyWeather, setWeekelyWeather] = useState<WeatherWithDate[]>([]);
 
   useEffect(() => {
     if (!location.lat || !location.lon) {
       return;
     }
 
+    // 오늘 날씨
     const fetchWeather = async () => {
       const data = await getWeather(location);
-      setWeather(data?.name);
-      console.log(data);
+      setWeather(data);
+    };
+
+    const fetchWeatherList = async () => {
+      const today = new Date().toISOString().split("T")[0];
+      const dataList = await getWeatherList(location);
+
+      // 시간대별 날씨
+      setTodayHourly(
+        dataList.filter((data: WeatherWithDate) => data.date === today)
+      );
+
+      // 주간 날씨
+      setWeekelyWeather(
+        dataList.filter(
+          (data: WeatherWithDate) =>
+            data.date !== today && data.time === "12:00:00"
+        )
+      );
     };
 
     fetchWeather();
+    fetchWeatherList();
   }, [location]);
 
-  return { weather };
+  return { weather, todayHourly, weekelyWeather };
 }
