@@ -35,3 +35,11 @@ export type WeatherWithDate = Weather & {
   date: string;
   time: string;
 };
+
+export type WeeklyWeatherType = {
+  date: string;
+  am?: Weather;
+  pm?: Weather;
+  temp_min?: string;
+  temp_max?: string;
+};
