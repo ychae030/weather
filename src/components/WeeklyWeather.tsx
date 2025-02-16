@@ -7,13 +7,12 @@ type Props = {
 };
 export default function WeeklyWeather({ weathers }: Props) {
   return (
-    <section className="px-2">
-      <div className="flex justify-between">
+    <section className="basis-1/3">
+      <div className="flex justify-between px-6 mb-4 text-gray-400">
         <h3>주간온도</h3>
         <p>최저 최고</p>
       </div>
-
-      <ul>
+      <ul className="card px-6 py-2 rounded-xl">
         {weathers.map(({ date, am, pm, temp_max, temp_min }) => (
           <WeeklyWeatherCard
             key={date}

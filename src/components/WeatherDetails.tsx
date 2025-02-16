@@ -27,15 +27,15 @@ export default function WeatherDetails({
     },
   ];
   return (
-    <section>
+    <section className="flex gap-5 mt-7">
       {MAP_DETAIL.map(({ title, icon, data }) => (
-        <>
-          <h4 className="flex">
+        <div className="card rounded-xl w-1/3 px-4 py-6">
+          <h4 className="flex gap-2 items-center mb-3">
             {icon}
             {title}
           </h4>
-          <p>{data}</p>
-        </>
+          <p className="text-xl">{data}</p>
+        </div>
       ))}
     </section>
   );

@@ -1,1 +1,20 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  font-family: "GmarketSansMedium";
+  background-color: #f6f7ff;
+  color: #495057;
+}
+
+.card{
+background: #f6f7ff;
+box-shadow:  8px 8px 13px #dbdfed,
+             -8px -8px 13px #fbffff;
+}
