@@ -1,4 +1,5 @@
 import { WeatherMainType } from "../model/weather";
+import { FaLocationDot } from "react-icons/fa6";
 
 export default function WeatherMain({
   region,
@@ -12,8 +13,9 @@ export default function WeatherMain({
     <section className="flex">
       <div className="grid justify-center items-center">
         <p>
-          <span className=" block text-xl">{region}</span>
-          <strong className="block text-3xl">{locality}</strong>
+          <FaLocationDot className="mb-3" />
+          <span className=" block text-xl"> {region}</span>
+          <strong className="block text-3xl"> {locality}</strong>
         </p>
         <div>
           <h1 className="text-6xl">{temp}°C</h1>
