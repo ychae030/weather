@@ -24,6 +24,9 @@ export default function WeeklyWeather({ weathers }: Props) {
           />
         ))}
       </ul>
+      <p className="mt-4">
+        사용 API: <a href="https://openweathermap.org/api">Open Weather</a>
+      </p>
     </section>
   );
 }
