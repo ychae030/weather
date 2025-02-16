@@ -50,6 +50,7 @@ export const getWeatherList = async ({ lat, lon }: Location) => {
       const { main, description, icon } = item.weather[0];
       const { feels_like, humidity, temp, temp_max, temp_min } = item.main;
       const { deg, speed } = item.wind;
+
       return {
         date: item.dt_txt.split(" ")[0],
         time: item.dt_txt.split(" ")[1],
@@ -63,6 +64,7 @@ export const getWeatherList = async ({ lat, lon }: Location) => {
         temp_min: parseFloat(temp_min.toFixed(1)),
         deg: getWindDirection(deg),
         speed,
+        rain: item.pop,
       };
     });
   } catch (error) {

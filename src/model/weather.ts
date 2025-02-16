@@ -16,6 +16,7 @@ export type WeatherAPI = {
     speed: number;
     deg: number;
   };
+  pop: number;
 };
 
 export type Weather = {
@@ -29,6 +30,7 @@ export type Weather = {
   temp_min: number;
   deg: string;
   speed: number;
+  rain?: number;
 };
 
 export type WeatherWithDate = Weather & {
